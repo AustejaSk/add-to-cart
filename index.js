@@ -12,6 +12,7 @@ const shoppingListInDB = ref(database, "shoppingList")
 const inputFieldEl = document.getElementById("input-field")
 const addButtonEl = document.getElementById("add-button")
 const shoppingListEl = document.getElementById("shopping-list")
+const removeItemsBtn = document.getElementById("remove-items-btn")
 
 addButtonEl.addEventListener("click", function() {
     let inputValue = inputFieldEl.value
@@ -21,8 +22,14 @@ addButtonEl.addEventListener("click", function() {
     clearInputFieldEl()
 })
 
+
+removeItemsBtn.addEventListener("click", function() {
+    remove(shoppingListInDB)
+})
+
 onValue(shoppingListInDB, function(snapshot) {
     if (snapshot.exists()) {
+        removeItemsBtn.style.display = "block"
         let itemsArray = Object.entries(snapshot.val())
     
         clearShoppingListEl()
@@ -36,6 +43,7 @@ onValue(shoppingListInDB, function(snapshot) {
         }    
     } else {
         shoppingListEl.innerHTML = "No items here... yet"
+        removeItemsBtn.style.display = "none"
     }
 })
 

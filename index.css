@@ -48,6 +48,20 @@ button:hover {
     cursor: pointer;
 }
 
+.remove-items-btn {
+    background: none;
+    font-size: 18px;
+    text-decoration: underline;
+    color: #0e0e0e;
+    margin-top: 15px;
+    padding: 0;
+}
+
+.remove-items-btn:hover {
+    background: none;
+    transform: scale(1.02);
+}
+
 ul {
     list-style-type: none;
     padding: 0;
